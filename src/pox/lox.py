@@ -59,7 +59,6 @@ class Lox:
             sys.exit(64)
 
         elif number_of_args == 1:
-            print(args[0])
             self.__run_file(args[0])
 
         else:
