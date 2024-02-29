@@ -1,0 +1,63 @@
+[project]
+name = "pox"
+requires-python = ">= 3.12"
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+    #
+    # installing dependencies
+    # -----------------------
+    #
+    "pip",
+    "pip-tools",
+    #
+    # style enforcement, linting, etc.
+    # -----------------------------
+    # Various tools to help enforce consistency.
+    "black",
+    "isort",
+    "reuse", # <-- for copyright
+    #
+    # building the package
+    # --------------------
+    "build",
+    "setuptools>=45",
+    "setuptools_scm[toml]>=6.2", # <-- for dynamic version control
+    #
+    # testing the package
+    # -------------------
+    "pytest",
+    #
+    # publishing the package to PyPI
+    # ------------------------------
+    # "twine",
+]
+
+[project.scripts]
+pox = "pox:__main__.run_pox"
+
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.isort]
+atomic = true
+profile = "black"
+line_length = 88
+skip_gitignore = true
+skip_glob = ["notes"]
+known_first_party = [
+    # none
+]
+
+[tool.pip-tools]
+allow-unsafe = true
+generate-hashes = true
+resolver = "backtracking"
+
+[tool.setuptools_scm]
