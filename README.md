@@ -8,7 +8,7 @@ When I get stuck or need inspiration, I'm referring to:
 
 - [FallenDeity's LoxInterpreter](https://github.com/FallenDeity/LoxInterpreter)
 - [ImAKappa's pylox](https://github.com/ImAKappa/pylox)
-- [MtScience's PyLox](https://github.com/MtScience/PyLox/tree/main)
+- [MtScience's PyLox](https://github.com/MtScience/PyLox)
 - plus lots of other [Lox implementations](https://github.com/munificent/craftinginterpreters/wiki/Lox-Implementations)
 
 ## Current progress
