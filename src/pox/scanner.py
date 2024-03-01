@@ -11,7 +11,7 @@ Crafting Interpreters book:
 - [4.6: Longer Lexemes](http://www.craftinginterpreters.com/scanning.html#longer-lexemes)
 - [4.7: Reserved Words and Identifiers](http://www.craftinginterpreters.com/scanning.html#reserved-words-and-identifiers)
 
-This file is is equivalent to the `Scanner.java` file in Nystrom's original 
+This file is is equivalent to the `Scanner.java` file in Nystrom's original
 jlox implementation. A link to the most recent version of that file can be 
 found below, as well as a permalink to the file as it existed when I began
 this project.
@@ -84,9 +84,9 @@ class Scanner:
     def scanTokens(self) -> list[Token]:
         """This function iterates through the input source code until it
         reaches the end, scanning each lexeme encountered and appending the
-        corresponding `Token` object to the list of tokens. If the end of the
-        input is reached, a `Token` representing the end of file (EOF) is
-        appended to the list before returning."""
+        corresponding `Token` object to the list of tokens. If the end of
+        the input is reached, a `Token` representing the end of file (EOF)
+        is appended to the list before returning."""
 
         while not self.__isAtEnd():  # we are at beginning of next lexeme
             self.start = self.current
@@ -107,18 +107,20 @@ class Scanner:
     # - [Section 4.6](https://craftinginterpreters.com/scanning.html#longer-lexemes)
     # - [Section 4.7](https://craftinginterpreters.com/scanning.html#reserved-words-and-identifiers)
     def __scanToken(self):
-        """Scans the current position in the source code and identifies the token
-        at that position.
+        """Scans the current position in the source code and identifies
+        the token at that position.
 
-        This method examines the character at the current position in the source
-        code and determines the corresponding token type. Depending on the
-        character, it may identify single-character tokens or potentially
-        multi-character tokens. It also handles comments, whitespace, newlines,
-        string literals, number literals, and identifiers.
+        This method examines the character at the current position in the
+        source code and determines the corresponding token type. Depending
+        on the character, it may identify single-character tokens or
+        potentially multi-character tokens. It also handles comments,
+        whitespace, newlines, string literals, number literals, and
+        identifiers.
 
         Raises:
-            ScannerError: If the character at the current position does not match
-            any expected token type, indicating an unexpected character."""
+            ScannerError: If the character at the current position does
+            not match any expected token type, indicating an unexpected
+            character."""
 
         c = self.__advance()
         match c:
@@ -147,19 +149,27 @@ class Scanner:
             # Potentially multi-character tokens
             case "!":
                 self.__addToken(
-                    TokenType.BANG_EQUAL if self.__match("=") else TokenType.BANG
+                    TokenType.BANG_EQUAL
+                    if self.__match("=")
+                    else TokenType.BANG
                 )
             case "=":
                 self.__addToken(
-                    TokenType.EQUAL_EQUAL if self.__match("=") else TokenType.EQUAL
+                    TokenType.EQUAL_EQUAL
+                    if self.__match("=")
+                    else TokenType.EQUAL
                 )
             case "<":
                 self.__addToken(
-                    TokenType.LESS_EQUAL if self.__match("=") else TokenType.LESS
+                    TokenType.LESS_EQUAL
+                    if self.__match("=")
+                    else TokenType.LESS
                 )
             case ">":
                 self.__addToken(
-                    TokenType.GREATER_EQUAL if self.__match("=") else TokenType.GREATER
+                    TokenType.GREATER_EQUAL
+                    if self.__match("=")
+                    else TokenType.GREATER
                 )
 
             # and the particularly fancy case of comments, which can go until
@@ -218,7 +228,8 @@ class Scanner:
         except KeyError:
             token_type = TokenType.IDENTIFIER
 
-        self.__addToken(token_type)  # BUG: Should be __addToken(token_type, text)?
+        # BUG: Should be __addToken(token_type, text)?
+        self.__addToken(token_type)
 
     # Corresponds to:
     # - [Section 4.6.2](https://craftinginterpreters.com/scanning.html#number-literals)
@@ -333,15 +344,16 @@ class Scanner:
     # Corresponds to:
     # - [Section 4.4](https://craftinginterpreters.com/scanning.html#the-scanner-class)
     def __isAtEnd(self) -> bool:
-        """Returns `True` if the current scanner position is at or beyond the end
-        of the source code string."""
+        """Returns `True` if the current scanner position is at or beyond
+        the end of the source code string."""
         return True if self.current >= len(self.source) else False
 
     # Corresponds to:
     # - [Section 4.5](http://www.craftinginterpreters.com/scanning.html#recognizing-lexemes)
     def __advance(self) -> str:
-        """Returns whatever character is in the Scanner's `self.source` string
-        at index `self.current`, then increments `self.current` by 1."""
+        """Returns whatever character is in the Scanner's `self.source`
+        string at index `self.current`, then increments `self.current`
+        by 1."""
 
         # IMPLEMENTATION NOTE: Nystrom's original Java code for this method is
         #
@@ -363,13 +375,9 @@ class Scanner:
 
     # Corresponds to:
     # - [Section 4.5](http://www.craftinginterpreters.com/scanning.html#recognizing-lexemes)
-    def __addToken(
-        self,
-        tokentype: TokenType,
-        literal: object = None,
-    ):
-        """Grabs the text of the current lexeme and creates a new token for it,
-        then adds the new token to the Scanner's `self.tokens`."""
+    def __addToken(self, tokentype: TokenType, literal: object = None):
+        """Grabs the text of the current lexeme and creates a new token for
+        it, then adds the new token to the Scanner's `self.tokens`."""
 
         text = self.source[self.start : self.current]
         self.tokens.append(
@@ -415,8 +423,6 @@ class AuldScanner:
 
     class handle_long_token:
         def comment(self): ...
-        def identifier(
-            self,
-        ): ...  # TODO: Rename to 'identifier_or_keyword'?
+        def identifier(self): ...  # TODO: Rename to 'identifier_or_keyword'?
         def number(self): ...
         def string(self): ...

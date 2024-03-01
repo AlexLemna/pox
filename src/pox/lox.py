@@ -28,15 +28,15 @@ class Lox:
     # Corresponds to:
     # - [Section 4.1.1](http://www.craftinginterpreters.com/scanning.html#error-handling)
     hadError: bool = False
-    """We use this to avoid executing code that has a known error. We also use it to
-    exit with a non-zero exit code when necessary."""
+    """We use this to avoid executing code that has a known error. We also use 
+    it to exit with a non-zero exit code when necessary."""
 
     # Corresponds to:
     # - [Section 4.1](http://www.craftinginterpreters.com/scanning.html#the-interpreter-framework)
     def main(self, args: list[str] = sys.argv[1:]):
-        """The first bit of code we write, this method serves as the 'entry point'
-        to our Lox interpreter. It's the bit of code that lets us call our program
-        by typing
+        """The first bit of code we write, this method serves as the 'entry
+        point' to our Lox interpreter. It's the bit of code that lets us call
+        our program by typing
 
         ```shell
             $ pox
@@ -46,11 +46,10 @@ class Lox:
             $ pox somefile.lox
         ```
 
-        If we call our program with no arguments (just `pox`), it launches the REPL
-        prompt. If we call our program with one argument (`pox somefile.lox`), it
-        assumes that argument is the name of a Lox script. If we call our program
-        with more than one argument, it exits with an error.
-        """
+        If we call our program with no arguments (just `pox`), it launches the
+        REPL prompt. If we call our program with one argument (`pox somefile.lox`),
+        it assumes that argument is the name of a Lox script. If we call our
+        program with more than one argument, it exits with an error."""
 
         number_of_args = len(args)
 
