@@ -7,4 +7,15 @@ from .lox import Lox
 
 def run_pox():
     """Runs the Lox interpreter."""
-    Lox().main()
+
+    try:
+        # TODO: explain this
+        Lox().main()
+
+    except FileNotFoundError as e:  # TODO: explain this
+        import pox.alex_extras.cli
+
+        if e.filename == "--version":
+            pox.alex_extras.cli.main()
+        else:
+            raise e
