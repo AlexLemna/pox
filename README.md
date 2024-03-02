@@ -22,11 +22,11 @@ When I get stuck or need inspiration, I'm referring to:
   - [x] *4.6: Longer Lexemes*
   - [x] *4.7: Reserved Words and Identifiers*
 
-- [ ] [**Chapter 5: Representing Code**](http://www.craftinginterpreters.com/representing-code.html)
-  - [ ] 5.1: Context-Free Grammers
-  - [ ] 5.2: Implementing Syntax Trees
-  - [ ] 5.3: Working with Trees
-  - [ ] 5.4: A (Not Very) Pretty Printer
+- [x] [**Chapter 5: Representing Code**](http://www.craftinginterpreters.com/representing-code.html)
+  - *5.1: Context-Free Grammers* (*no code*)
+  - [x] 5.2: Implementing Syntax Trees
+  - [x] 5.3: Working with Trees
+  - [x] 5.4: A (Not Very) Pretty Printer
 
 - [ ] [**Chapter 6: Parsing Expressions**](http://www.craftinginterpreters.com/parsing-expressions.html)
   - [ ] 6.1: Ambiguity and the Parsing Game
