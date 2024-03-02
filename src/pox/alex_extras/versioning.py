@@ -117,7 +117,7 @@ class PoxVersion:
         will be accurate if Pox was installed "normally", i.e. downloading
         from GitHub and running `pip install .` but it may be inaccurate
         if Pox was installed in editable mode by downloading from GitHub
-        and running `pip install --editable`."""
+        and running `pip install --editable .`."""
 
         v = importlib.metadata.version("pox")
         return v
